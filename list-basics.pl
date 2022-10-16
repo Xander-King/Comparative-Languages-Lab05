@@ -1,24 +1,24 @@
 % List basics in prolog
 
 list([]). 
-list(['I', did, did, 'I']). 
+list(['\'I\'', did, did, '\'I\'']). 
 list([1, 2, 3, 4]). 
 
 % TODO:
 % Print out the length of each list using the prolog 'length' predicate
 
-problem1(L) :- format('Do Problem 1'), nl. 
+problem1(L) :- length(L, Len), format('~w', Len), nl. 
 :- foreach(list(L), problem1(L)).
 
 % TODO
 % Check if each list has a 3 as a member. 
 
-problem2(L) :- format('Do Problem 1'), nl. 
+problem2(L) :- (member(3, L), format('True');format('False')), nl. 
 :-foreach(list(L), problem2(L)). 
 	
 % TODO 
 % Append pairs of lists
-problem3(L1, L2) :- format('Do Problem 3 with ~w and ~w', [L1, L2]), nl. 
+problem3(L1, L2) :- append(L1, L2, LL), format('~w', [LL]), nl. 
 :- foreach((list(L1), list(L2), L1 \= L2, \+ length(L1, 0), \+ length(L2, 0)), 
            problem3(L1, L2)).
 

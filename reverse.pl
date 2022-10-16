@@ -9,8 +9,10 @@
 %            if Result is [c, b, a] then helper is True
 
 % TODO: Implement my_reverse  (you need to implement helper)
-% my_reverse(L1, L2) :- helper(L1, L2, []).
+my_reverse(L1, L2) :- helper(L1, L2, []).
 
+helper([], Result, Result) :- !.
+helper([L1h|L1t], Result, L2) :- helper(L1t, Result, [L1h|L2]).
 
 
 
